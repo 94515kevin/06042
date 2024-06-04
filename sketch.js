@@ -9,7 +9,7 @@ let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
 function preload(){
-earImg = loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif")
+eyeImg = loadImage("upload_bc549284c3544930bf04fef1eb154c5d.gif")
 }
 async function init() {
   const detectorConfig = {
@@ -67,18 +67,18 @@ function drawSkeleton() { //偵測出各點，並畫線
      pose = poses[i];
     let speed = 2;
     let posex = width-((frameCount*speed)%width)
-    partA = pose.keypoints[3]; //左耳
-    partB = pose.keypoints[4]; //右耳
+    partA = pose.keypoints[3]; //左眼
+    partB = pose.keypoints[4]; //右眼
     if (partA.score > 0.1 ) {
       // for (let a=0;a<partA.x;a=a+1) {
-        image(earImg,posex, partB.y-25, 50, 50);
+        image(eyeImg,posex, partB.y-25, 50, 50);
       // }
     }
     partA = pose.keypoints[7]; //left elbow
     partB = pose.keypoints[8]; //right elbow
     if (partA.score > 0.1 ) {
       // for (let a=0;a<partA.x;a=a+1) {
-        image(earImg,posex, partB.y-25, 50, 50);
+        image(eyeImg,posex, partA.y-25, 50, 50);
       // }
     }
     partA = pose.keypoints[0]; 
@@ -88,23 +88,23 @@ function drawSkeleton() { //偵測出各點，並畫線
       fill(0); 
       textAlign(CENTER, CENTER); // 以文字中心為座標
       scale(-1, 1); // 左右顛倒
-      text("412730342 蕭雯萱", -partA.x, partA.y - 50);
+      text("412730300 洪子翔", -partA.x, partA.y - 50);
       pop();
     }
 
     // if (partB.score > 0.1 ) {
-    //   image(earImg,partB.x-40, partB.y-25, 50, 50);
+    //   image(eyeImg,partB.x-40, partB.y-25, 50, 50);
       
     // }
     // partA = pose.keypoints[7]; //left elbow
     // partB = pose.keypoints[8]; //right elbow
     
     // if (partA.score > 0.1 ) {
-    //   image(earImg,partA.x, partA.y-25, 50, 50);
+    //   image(eyeImg,partA.x, partA.y-25, 50, 50);
       
     // }
     // if (partB.score > 0.1 ) {
-    //   image(earImg,partB.x-40, partB.y-25, 50, 50);
+    //   image(eyeImg,partB.x-40, partB.y-25, 50, 50);
       
     // }
 
@@ -115,7 +115,7 @@ function drawSkeleton() { //偵測出各點，並畫線
     //   fill(0); 
     //   textAlign(CENTER, CENTER); // 以文字中心為座標
     //   scale(-1, 1); // 左右顛倒
-    //   text("412730342 蕭雯萱", -partA.x, partA.y - 50);
+    //   text("", -partA.x, partA.y - 50);
     //   pop();
     // }
     }
